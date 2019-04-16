@@ -1,0 +1,44 @@
+{extend name='base'/}
+{block name='content'}
+<div class="panel panel-default">
+    <div class="panel-body contentList">
+        {foreach name='articleData' item='vo'}
+        <div class="panel panel-default w_article_item">
+            <div class="panel-body">
+                <div class="row" style="margin-left: 5px;margin-right: 5px">
+                    <div class="col-xs-6 col-md-3">
+                        <a href="#" class="thumbnail w_thumbnail">
+                            <img src="{$vo['arc_thumb']}" alt="...">
+                        </a>
+                    </div>
+
+                    <h4 class="media-heading">
+                        <a class="title" href="{:url('index/content/index',['arc_id'=>$vo['arc_id']])}">{$vo['arc_title']}</a>
+                    </h4>
+                    <p><a class="">分类：</a><a class="label label-default">{$vo['cate_name']}</a></p>
+                    <p class="w_list_overview overView">{$vo['arc_digest']}/p>
+                    <p>
+                       <span class="count"><i class="glyphicon glyphicon-user"></i>
+                       <a href="#">{$vo['arc_author']}</a></span>
+                       <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$vo['arc_click']}</span>
+                       <span class="count">
+                        <i class="glyphicon glyphicon-tags"></i>
+                        标签:
+                         {foreach name="vo['tags']" item='v'}
+                         <span >{$v['tag_name']}&nbsp;&nbsp;</span>
+                         {/foreach}
+                        </span>
+                        <span class="count"><i class="glyphicon glyphicon-time"></i>{:date('Y-m-d',$vo['sendtime'])}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {/foreach}
+        <div class="page" style="margin-left: 250px">
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

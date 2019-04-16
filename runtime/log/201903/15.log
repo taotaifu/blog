@@ -1,0 +1,1910 @@
+---------------------------------------------------------------
+[ 2019-03-15T20:55:43+08:00 ] 223.72.99.31 POST blog.taotaifu.cn/admin/article/store.html
+[运行时间：0.095725s] [吞吐率：10.45req/s] [内存消耗：2,586.95kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article',
+    2 => 'store',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654464',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/admin/article/store.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryTciTptil438aT5jO',
+  'upgrade-insecure-requests' => '1',
+  'origin' => 'http://blog.taotaifu.cn',
+  'cache-control' => 'max-age=0',
+  'content-length' => '37461',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+)
+[ info ] [ PARAM ] array (
+  'arc_title' => 'thinkphp5系列之手势验证码（VAPTCHA）',
+  'arc_author' => 'Mrs.默先森',
+  'arc_sort' => '100',
+  'cate_id' => '52',
+  'tag' => 
+  array (
+    0 => '1',
+  ),
+  'arc_thumb' => '/upload/20190315/9ae892e4447cbf5b5d580205ec00510e.gif',
+  'arc_digest' => 'VAPTCHA，又称为手势验证码，需要用户使用鼠标绘制指定轨迹即可完成人及验证，开始试了一下，画好几遍才能华对，感觉智商压制啊，但想想人家1xxx6验证码，嗯，难点还是好，验证码能有效防止恶意密码破解、论坛灌水、垃圾邮件、撞库等。',
+  'arc_content' => '<h1 label="标题居左"><span>官网&amp;手册</span></h1><p><a href="https://www.vaptcha.com/" target="_blank" title="手势验证码官网">手势验证码官网</a><br></p><p><a href="https://www.vaptcha.com/document/install" target="_blank" title="Vaptcha-php-sdk">Vaptcha-php-sdk</a><br></p><p><br></p><h1 label="标题居左"><span>环境要求</span><br></h1><p>Vaptcha SDK PHP版本适用于 php5.3及以上版本</p><p>需开启curl扩展</p><p><br></p><h1 label="标题居左"><span>安装SDk</span></h1><p>github下载：git clone https://github.com/vaptcha/vaptcha-php-sdk.git</p><p>composer安装(推荐)：composer require Vaptcha/vaptcha-sdk</p><p><br></p><h1 label="标题居左"><span>代码部署</span></h1><p><span><span><span label="明显强调">登录</span><a href="https://www.vaptcha.com/manage" target="_blank" title="后台"><span>后台</span></a><span label="明显强调">添加验证单元</span></span></span></p><p>创建验证单元获得vid+key</p><p>参数请妥善保存</p><p>部署需要在线服务器进行</p><p><img src="https://wubin.pro/Upload/ueditor/image/20180428/1524896400894496.png" width="421" height="518"><br></p><p><img src="https://www.wubin.pro/Upload/ueditor/image/20180428/1524896400272682.png" width="656" height="68"></p><p><br></p><p><span microsoft="" helvetica="" font-size:="" white-space:="" background-color:=""><span label="明显强调">引入js和预加载动画</span></span></p><div class="code-toolbar"><pre class="line-numbers language-php"><code class=" language-php"><span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>
+    <span class="token punctuation">.</span>vaptcha<span class="token operator">-</span>init<span class="token operator">-</span>main <span class="token punctuation">{</span>
+        display<span class="token punctuation">:</span> table<span class="token punctuation">;</span>
+        width<span class="token punctuation">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span>
+        height<span class="token punctuation">:</span> <span class="token number">100</span><span class="token operator">%</span>
+        background<span class="token operator">-</span>color<span class="token punctuation">:</span> <span class="token shell-comment comment">#EEEEEE;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span>vaptcha<span class="token operator">-</span>init<span class="token operator">-</span>loading <span class="token punctuation">{</span>
+        display<span class="token punctuation">:</span> table<span class="token operator">-</span>cell<span class="token punctuation">;</span>
+        vertical<span class="token operator">-</span>align<span class="token punctuation">:</span> middle<span class="token punctuation">;</span>
+        text<span class="token operator">-</span>align<span class="token punctuation">:</span> center
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span>vaptcha<span class="token operator">-</span>init<span class="token operator">-</span>loading<span class="token operator">&gt;</span>a <span class="token punctuation">{</span>
+        display<span class="token punctuation">:</span> inline<span class="token operator">-</span>block<span class="token punctuation">;</span>
+        width<span class="token punctuation">:</span> <span class="token number">18</span>px<span class="token punctuation">;</span>
+        height<span class="token punctuation">:</span> <span class="token number">18</span>px<span class="token punctuation">;</span>
+        border<span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span>vaptcha<span class="token operator">-</span>init<span class="token operator">-</span>loading<span class="token operator">&gt;</span>a img <span class="token punctuation">{</span>
+        vertical<span class="token operator">-</span>align<span class="token punctuation">:</span> middle
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span>vaptcha<span class="token operator">-</span>init<span class="token operator">-</span>loading <span class="token punctuation">.</span>vaptcha<span class="token operator">-</span>text <span class="token punctuation">{</span>
+        font<span class="token operator">-</span>family<span class="token punctuation">:</span> sans<span class="token operator">-</span>serif<span class="token punctuation">;</span>
+        font<span class="token operator">-</span>size<span class="token punctuation">:</span> <span class="token number">12</span>px<span class="token punctuation">;</span>
+        color<span class="token punctuation">:</span> <span class="token shell-comment comment">#CCCCCC;</span>
+        vertical<span class="token operator">-</span>align<span class="token punctuation">:</span> middle
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 点击式按钮建议宽度不低于<span class="token number">200</span>px<span class="token punctuation">,</span>高度介于<span class="token number">36</span>px与<span class="token number">46</span>px  <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 嵌入式仅需设置宽度，高度根据宽度自适应，最小宽度为<span class="token number">200</span>px <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token double-quoted-string string">"vaptcha_container"</span> style<span class="token operator">=</span><span class="token double-quoted-string string">"width:300px;height:36px;"</span><span class="token operator">&gt;</span>
+   <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>vaptcha_container是用来引入Vaptcha的容器，下面代码为预加载动画，仅供参考<span class="token operator">--</span><span class="token operator">&gt;</span>
+   <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token double-quoted-string string">"vaptcha-init-main"</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token double-quoted-string string">"vaptcha-init-loading"</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token double-quoted-string string">"/"</span> target<span class="token operator">=</span><span class="token double-quoted-string string">"_blank"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token double-quoted-string string">"https://cdn.vaptcha.com/vaptcha-loading.gif"</span><span class="token operator">/</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token double-quoted-string string">"vaptcha-text"</span><span class="token operator">&gt;</span>Vaptcha启动中<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></div><div class="code-toolbar"><pre class="line-numbers language-php"><code class=" language-php"><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token double-quoted-string string">"https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token double-quoted-string string">"https://cdn.vaptcha.com/v.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></div><p><br></p><p>布局如图，这里在页面增加用户名和密码</p><p>预加载动画</p><p><img src="https://wubin.pro/Upload/ueditor/image/20180428/1524897015861587.png" alt="1524897015861587.png" width="561" height="245"></p><p><br></p><p><span microsoft="" helvetica="" font-size:="" white-space:="" background-color:=""><span label="明显强调">请求服务器端获取vid和challenge</span></span></p><p>请求getVaptcha加载手势验证码</p><p>宕机请求getDownTime处理</p><p>javascript部分代码：</p><div class="code-toolbar"><pre class="line-numbers language-php"><code class=" language-php">    <span class="token keyword">var</span> form <span class="token operator">=</span> <span class="token punctuation">{</span>
+      token<span class="token punctuation">:</span> <span class="token single-quoted-string string">\'\'</span><span class="token punctuation">,</span>
+      challenge<span class="token punctuation">:</span> <span class="token single-quoted-string string">\'\'</span><span class="token punctuation">,</span>
+      username<span class="token punctuation">:</span> <span class="token single-quoted-string string">\'\'</span><span class="token punctuation">,</span>
+      password<span class="token punctuation">:</span> <span class="token single-quoted-string string">\'\'</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//Vaptcha对象</span>
+    <span class="token keyword">var</span> obj<span class="token punctuation">;</span>
+    <span class="token comment">//根据服务端接口获取的vid与challenge创建实例</span>
+    <span class="token comment">//验证参数对象</span>
+    $<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"{:url(\'getVaptcha\')}"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+        vid<span class="token punctuation">:</span> res<span class="token punctuation">.</span>vid<span class="token punctuation">,</span> <span class="token comment">//验证单元id, string, 必填</span>
+        challenge<span class="token punctuation">:</span> res<span class="token punctuation">.</span>challenge<span class="token punctuation">,</span> <span class="token comment">//验证流水号, string, 必填</span>
+        container<span class="token punctuation">:</span> <span class="token double-quoted-string string">"#vaptcha_container"</span><span class="token punctuation">,</span> <span class="token comment">//验证码容器, HTMLElement或者selector, 必填</span>
+        type<span class="token punctuation">:</span> <span class="token double-quoted-string string">"click"</span><span class="token punctuation">,</span> <span class="token comment">//必填，表示点击式验证模式[embed:嵌入式,click:点击式,invisible:隐藏式]</span>
+        effect<span class="token punctuation">:</span> <span class="token single-quoted-string string">\'float\'</span><span class="token punctuation">,</span> <span class="token comment">//验证图显示方式, string, 可选择float, popup, 默认float</span>
+        color<span class="token punctuation">:</span> <span class="token double-quoted-string string">"#3C8AFF"</span><span class="token punctuation">,</span> <span class="token comment">//按钮颜色</span>
+        https<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">//协议类型,boolean,可选true,false,不填则自适应。</span>
+        outage<span class="token punctuation">:</span> <span class="token double-quoted-string string">"{:url(\'getDownTime\')}"</span><span class="token punctuation">,</span> <span class="token comment">//服务器端配置的宕机模式接口地址</span>
+        checkingAnimation<span class="token punctuation">:</span> <span class="token double-quoted-string string">"display"</span><span class="token punctuation">,</span> <span class="token comment">//是否显示智能检测动画, "hide"则为隐藏</span>
+        success<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>token<span class="token punctuation">,</span> challenge<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//验证成功回调函数, 参数token, challenge 为string, 必填</span>
+          <span class="token comment">//执行表单验证失败时，需要重新初始化VAPTCHA</span>
+          <span class="token comment">//todo:执行人机验证成功后的操作</span>
+          form<span class="token punctuation">.</span>token <span class="token operator">=</span> token<span class="token punctuation">;</span>
+          form<span class="token punctuation">.</span>challenge <span class="token operator">=</span> challenge<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        fail<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//验证失败回调函数</span>
+          <span class="token comment">//todo:执行人机验证失败后的操作</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+
+      window<span class="token punctuation">.</span><span class="token function">vaptcha</span><span class="token punctuation">(</span>config<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>vaptcha_obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        obj <span class="token operator">=</span> vaptcha_obj<span class="token punctuation">;</span>
+        obj<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">\'json\'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">\'json\'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></div><p><br></p><p>服务器端代码部署:</p><p><span microsoft="" helvetica="" font-size:="" background-color:="">使用接口前需先实例化</span><code liberation="" font-size:="" padding:="" 2px="" 4px="" color:="" background-color:="" border-radius:="" white-space:="">Vaptcha</code></p><div class="code-toolbar"><pre class="line-numbers language-php"><code class=" language-php"><span class="token keyword">use</span> <span class="token package">Vaptcha<span class="token punctuation">\\</span>Vaptcha</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span> <span class="token variable">$vaptcha</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$vid</span> <span class="token operator">=</span> <span class="token single-quoted-string string">\'your vid\'</span><span class="token punctuation">;</span>
+    <span class="token variable">$key</span> <span class="token operator">=</span> <span class="token single-quoted-string string">\'your key\'</span><span class="token punctuation">;</span>
+    <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">vaptcha</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vaptcha</span><span class="token punctuation">(</span><span class="token variable">$vid</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 实例化sdk，$vid 和 $key 对应验证单元中的Vid和Key</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></div><p>与html代码部署相结合的两个方法：</p><div class="code-toolbar"><pre class="line-numbers language-php"><code class=" language-php">    <span class="token comment">/**
+     * [getvaptcha 获取流水号接口]
+     * @return [type] [description]
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getvaptcha</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$challenge</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">vaptcha</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getChallenge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token function">json_encode</span><span class="token punctuation">(</span><span class="token variable">$challenge</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        exit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">/**
+     * [getDownTime 宕机模式]
+     * @return [type] [description]
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getDownTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token global">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">\'data\'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 客户端sdk以get方式发送数据</span>
+        <span class="token keyword">echo</span> <span class="token function">json_encode</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">vaptcha</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">downTime</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        exit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></div><p>正常加载手势验证码：</p><p><img src="https://wubin.pro/Upload/ueditor/image/20180428/1524898293795455.png" width="429" height="307"></p><p>宕机时显示验证码</p><p><img src="https://wubin.pro/Upload/ueditor/image/20180428/1524898294819295.png" width="418" height="384"></p><p><br></p><p><span label="明显强调">登录进行人机检测</span></p><p>提示消息使用<a href="http://layer.layui.com/" target="_blank" title="layer弹出层">layer弹出层</a><br></p><p>如有需要，请自行引入</p><div class="code-toolbar"><pre class="line-numbers language-php"><code class=" language-php"><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token double-quoted-string string">"https://cdn.bootcss.com/layer/3.1.0/layer.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></div><p><br></p><div class="code-toolbar"><pre class="line-numbers language-php"><code class=" language-php"><span class="token keyword">function</span> <span class="token function">post</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>form<span class="token punctuation">.</span>token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        layer<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token single-quoted-string string">\'请先进行人机验证\'</span><span class="token punctuation">,</span><span class="token punctuation">{</span>icon<span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      form<span class="token punctuation">.</span>username <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token single-quoted-string string">\'input[name=username]\'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      form<span class="token punctuation">.</span>password <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token single-quoted-string string">\'input[name=password]\'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      $<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"{:url(\'login\')}"</span><span class="token punctuation">,</span>form<span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>code<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+             layer<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>msg<span class="token punctuation">,</span><span class="token punctuation">{</span>icon<span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+             obj<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//初始化验证码</span>
+          <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            layer<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>msg<span class="token punctuation">,</span><span class="token punctuation">{</span>icon<span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token single-quoted-string string">\'json\'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></div><p>请求php处理登录<br></p><p>php中处理时需要对验证码进行二次验证</p><div class="code-toolbar"><pre class="line-numbers language-php"><code class=" language-php">    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">login</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">isPost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">//进行二次验证,成功返回true，失败返回false</span>
+            <span class="token variable">$validatePass</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">vaptcha</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">challenge</span><span class="token punctuation">,</span> <span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">token</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$validatePass</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token single-quoted-string string">\'code\'</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token single-quoted-string string">\'msg\'</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token single-quoted-string string">\'请先进行人机验证\'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">//比对用户名密码是否正确</span>
+            <span class="token variable">$userInfo</span> <span class="token operator">=</span> <span class="token function">db</span><span class="token punctuation">(</span><span class="token single-quoted-string string">\'user\'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token single-quoted-string string">\'username\'</span><span class="token punctuation">,</span> <span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">username</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token single-quoted-string string">\'password\'</span><span class="token punctuation">,</span> <span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">password</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$userInfo</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token single-quoted-string string">\'code\'</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token single-quoted-string string">\'msg\'</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token single-quoted-string string">\'用户名或密码不正确\'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token single-quoted-string string">\'code\'</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token single-quoted-string string">\'msg\'</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token single-quoted-string string">\'登录成功\'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre></div>',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Article->store[ /www/wwwroot/blog_taotaifu_cn/application/admin/controller/Article.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001503s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001501s ]
+[ sql ] [ SQL ] INSERT INTO `blog_article` (`arc_title` , `arc_author` , `arc_sort` , `cate_id` , `arc_thumb` , `arc_digest` , `arc_content`) VALUES ('thinkphp5系列之手势验证码（VAPTCHA）' , 'Mrs.默先森' , 100 , 52 , '/upload/20190315/9ae892e4447cbf5b5d580205ec00510e.gif' , 'VAPTCHA，又称为手势验证码，需要用户使用鼠标绘制指定轨迹即可完成人及验证，开始试了一下，画好几遍才能华对，感觉智商压制啊，但想想人家1xxx6验证码，嗯，难点还是好，验证码能有效防止恶意密码破解、论坛灌水、垃圾邮件、撞库等。' , '<h1 label=\"标题居左\"><span>官网&amp;手册</span></h1><p><a href=\"https://www.vaptcha.com/\" target=\"_blank\" title=\"手势验证码官网\">手势验证码官网</a><br></p><p><a href=\"https://www.vaptcha.com/document/install\" target=\"_blank\" title=\"Vaptcha-php-sdk\">Vaptcha-php-sdk</a><br></p><p><br></p><h1 label=\"标题居左\"><span>环境要求</span><br></h1><p>Vaptcha SDK PHP版本适用于 php5.3及以上版本</p><p>需开启curl扩展</p><p><br></p><h1 label=\"标题居左\"><span>安装SDk</span></h1><p>github下载：git clone https://github.com/vaptcha/vaptcha-php-sdk.git</p><p>composer安装(推荐)：composer require Vaptcha/vaptcha-sdk</p><p><br></p><h1 label=\"标题居左\"><span>代码部署</span></h1><p><span><span><span label=\"明显强调\">登录</span><a href=\"https://www.vaptcha.com/manage\" target=\"_blank\" title=\"后台\"><span>后台</span></a><span label=\"明显强调\">添加验证单元</span></span></span></p><p>创建验证单元获得vid+key</p><p>参数请妥善保存</p><p>部署需要在线服务器进行</p><p><img src=\"https://wubin.pro/Upload/ueditor/image/20180428/1524896400894496.png\" width=\"421\" height=\"518\"><br></p><p><img src=\"https://www.wubin.pro/Upload/ueditor/image/20180428/1524896400272682.png\" width=\"656\" height=\"68\"></p><p><br></p><p><span microsoft=\"\" helvetica=\"\" font-size:=\"\" white-space:=\"\" background-color:=\"\"><span label=\"明显强调\">引入js和预加载动画</span></span></p><div class=\"code-toolbar\"><pre class=\"line-numbers language-php\"><code class=\" language-php\"><span class=\"token operator\">&lt;</span>style<span class=\"token operator\">&gt;</span>\r\n    <span class=\"token punctuation\">.</span>vaptcha<span class=\"token operator\">-</span>init<span class=\"token operator\">-</span>main <span class=\"token punctuation\">{</span>\r\n        display<span class=\"token punctuation\">:</span> table<span class=\"token punctuation\">;</span>\r\n        width<span class=\"token punctuation\">:</span> <span class=\"token number\">100</span><span class=\"token operator\">%</span><span class=\"token punctuation\">;</span>\r\n        height<span class=\"token punctuation\">:</span> <span class=\"token number\">100</span><span class=\"token operator\">%</span>\r\n        background<span class=\"token operator\">-</span>color<span class=\"token punctuation\">:</span> <span class=\"token shell-comment comment\">#EEEEEE;</span>\r\n    <span class=\"token punctuation\">}</span>\r\n    <span class=\"token punctuation\">.</span>vaptcha<span class=\"token operator\">-</span>init<span class=\"token operator\">-</span>loading <span class=\"token punctuation\">{</span>\r\n        display<span class=\"token punctuation\">:</span> table<span class=\"token operator\">-</span>cell<span class=\"token punctuation\">;</span>\r\n        vertical<span class=\"token operator\">-</span>align<span class=\"token punctuation\">:</span> middle<span class=\"token punctuation\">;</span>\r\n        text<span class=\"token operator\">-</span>align<span class=\"token punctuation\">:</span> center\r\n    <span class=\"token punctuation\">}</span>\r\n    <span class=\"token punctuation\">.</span>vaptcha<span class=\"token operator\">-</span>init<span class=\"token operator\">-</span>loading<span class=\"token operator\">&gt;</span>a <span class=\"token punctuation\">{</span>\r\n        display<span class=\"token punctuation\">:</span> inline<span class=\"token operator\">-</span>block<span class=\"token punctuation\">;</span>\r\n        width<span class=\"token punctuation\">:</span> <span class=\"token number\">18</span>px<span class=\"token punctuation\">;</span>\r\n        height<span class=\"token punctuation\">:</span> <span class=\"token number\">18</span>px<span class=\"token punctuation\">;</span>\r\n        border<span class=\"token punctuation\">:</span> none<span class=\"token punctuation\">;</span>\r\n    <span class=\"token punctuation\">}</span>\r\n    <span class=\"token punctuation\">.</span>vaptcha<span class=\"token operator\">-</span>init<span class=\"token operator\">-</span>loading<span class=\"token operator\">&gt;</span>a img <span class=\"token punctuation\">{</span>\r\n        vertical<span class=\"token operator\">-</span>align<span class=\"token punctuation\">:</span> middle\r\n    <span class=\"token punctuation\">}</span>\r\n    <span class=\"token punctuation\">.</span>vaptcha<span class=\"token operator\">-</span>init<span class=\"token operator\">-</span>loading <span class=\"token punctuation\">.</span>vaptcha<span class=\"token operator\">-</span>text <span class=\"token punctuation\">{</span>\r\n        font<span class=\"token operator\">-</span>family<span class=\"token punctuation\">:</span> sans<span class=\"token operator\">-</span>serif<span class=\"token punctuation\">;</span>\r\n        font<span class=\"token operator\">-</span>size<span class=\"token punctuation\">:</span> <span class=\"token number\">12</span>px<span class=\"token punctuation\">;</span>\r\n        color<span class=\"token punctuation\">:</span> <span class=\"token shell-comment comment\">#CCCCCC;</span>\r\n        vertical<span class=\"token operator\">-</span>align<span class=\"token punctuation\">:</span> middle\r\n    <span class=\"token punctuation\">}</span>\r\n<span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>style<span class=\"token operator\">&gt;</span>\r\n<span class=\"token operator\">&lt;</span><span class=\"token operator\">!</span><span class=\"token operator\">--</span> 点击式按钮建议宽度不低于<span class=\"token number\">200</span>px<span class=\"token punctuation\">,</span>高度介于<span class=\"token number\">36</span>px与<span class=\"token number\">46</span>px  <span class=\"token operator\">--</span><span class=\"token operator\">&gt;</span>\r\n<span class=\"token operator\">&lt;</span><span class=\"token operator\">!</span><span class=\"token operator\">--</span> 嵌入式仅需设置宽度，高度根据宽度自适应，最小宽度为<span class=\"token number\">200</span>px <span class=\"token operator\">--</span><span class=\"token operator\">&gt;</span>\r\n<span class=\"token operator\">&lt;</span>div id<span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"vaptcha_container\"</span> style<span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"width:300px;height:36px;\"</span><span class=\"token operator\">&gt;</span>\r\n   <span class=\"token operator\">&lt;</span><span class=\"token operator\">!</span><span class=\"token operator\">--</span>vaptcha_container是用来引入Vaptcha的容器，下面代码为预加载动画，仅供参考<span class=\"token operator\">--</span><span class=\"token operator\">&gt;</span>\r\n   <span class=\"token operator\">&lt;</span>div <span class=\"token keyword\">class</span><span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"vaptcha-init-main\"</span><span class=\"token operator\">&gt;</span>\r\n      <span class=\"token operator\">&lt;</span>div <span class=\"token keyword\">class</span><span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"vaptcha-init-loading\"</span><span class=\"token operator\">&gt;</span>\r\n          <span class=\"token operator\">&lt;</span>a href<span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"/\"</span> target<span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"_blank\"</span><span class=\"token operator\">&gt;</span><span class=\"token operator\">&lt;</span>img src<span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"https://cdn.vaptcha.com/vaptcha-loading.gif\"</span><span class=\"token operator\">/</span><span class=\"token operator\">&gt;</span><span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>a<span class=\"token operator\">&gt;</span>\r\n          <span class=\"token operator\">&lt;</span>span <span class=\"token keyword\">class</span><span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"vaptcha-text\"</span><span class=\"token operator\">&gt;</span>Vaptcha启动中<span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>span<span class=\"token operator\">&gt;</span>\r\n      <span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>div<span class=\"token operator\">&gt;</span>\r\n  <span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>div<span class=\"token operator\">&gt;</span>\r\n<span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>div<span class=\"token operator\">&gt;</span><span aria-hidden=\"true\" class=\"line-numbers-rows\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class=\"toolbar\"><div class=\"toolbar-item\"><a>Copy</a></div></div></div><div class=\"code-toolbar\"><pre class=\"line-numbers language-php\"><code class=\" language-php\"><span class=\"token operator\">&lt;</span>script src<span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js\"</span><span class=\"token operator\">&gt;</span><span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>script<span class=\"token operator\">&gt;</span>\r\n<span class=\"token operator\">&lt;</span>script src<span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"https://cdn.vaptcha.com/v.js\"</span><span class=\"token operator\">&gt;</span><span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>script<span class=\"token operator\">&gt;</span><span aria-hidden=\"true\" class=\"line-numbers-rows\"><span></span><span></span></span></code></pre><div class=\"toolbar\"><div class=\"toolbar-item\"><a>Copy</a></div></div></div><p><br></p><p>布局如图，这里在页面增加用户名和密码</p><p>预加载动画</p><p><img src=\"https://wubin.pro/Upload/ueditor/image/20180428/1524897015861587.png\" alt=\"1524897015861587.png\" width=\"561\" height=\"245\"></p><p><br></p><p><span microsoft=\"\" helvetica=\"\" font-size:=\"\" white-space:=\"\" background-color:=\"\"><span label=\"明显强调\">请求服务器端获取vid和challenge</span></span></p><p>请求getVaptcha加载手势验证码</p><p>宕机请求getDownTime处理</p><p>javascript部分代码：</p><div class=\"code-toolbar\"><pre class=\"line-numbers language-php\"><code class=\" language-php\">    <span class=\"token keyword\">var</span> form <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span>\r\n      token<span class=\"token punctuation\">:</span> <span class=\"token single-quoted-string string\">\'\'</span><span class=\"token punctuation\">,</span>\r\n      challenge<span class=\"token punctuation\">:</span> <span class=\"token single-quoted-string string\">\'\'</span><span class=\"token punctuation\">,</span>\r\n      username<span class=\"token punctuation\">:</span> <span class=\"token single-quoted-string string\">\'\'</span><span class=\"token punctuation\">,</span>\r\n      password<span class=\"token punctuation\">:</span> <span class=\"token single-quoted-string string\">\'\'</span>\r\n    <span class=\"token punctuation\">}</span>\r\n    <span class=\"token comment\">//Vaptcha对象</span>\r\n    <span class=\"token keyword\">var</span> obj<span class=\"token punctuation\">;</span>\r\n    <span class=\"token comment\">//根据服务端接口获取的vid与challenge创建实例</span>\r\n    <span class=\"token comment\">//验证参数对象</span>\r\n    $<span class=\"token punctuation\">.</span><span class=\"token function\">get</span><span class=\"token punctuation\">(</span><span class=\"token double-quoted-string string\">\"{:url(\'getVaptcha\')}\"</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">function</span><span class=\"token punctuation\">(</span>res<span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\r\n      <span class=\"token keyword\">var</span> config <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span>\r\n        vid<span class=\"token punctuation\">:</span> res<span class=\"token punctuation\">.</span>vid<span class=\"token punctuation\">,</span> <span class=\"token comment\">//验证单元id, string, 必填</span>\r\n        challenge<span class=\"token punctuation\">:</span> res<span class=\"token punctuation\">.</span>challenge<span class=\"token punctuation\">,</span> <span class=\"token comment\">//验证流水号, string, 必填</span>\r\n        container<span class=\"token punctuation\">:</span> <span class=\"token double-quoted-string string\">\"#vaptcha_container\"</span><span class=\"token punctuation\">,</span> <span class=\"token comment\">//验证码容器, HTMLElement或者selector, 必填</span>\r\n        type<span class=\"token punctuation\">:</span> <span class=\"token double-quoted-string string\">\"click\"</span><span class=\"token punctuation\">,</span> <span class=\"token comment\">//必填，表示点击式验证模式[embed:嵌入式,click:点击式,invisible:隐藏式]</span>\r\n        effect<span class=\"token punctuation\">:</span> <span class=\"token single-quoted-string string\">\'float\'</span><span class=\"token punctuation\">,</span> <span class=\"token comment\">//验证图显示方式, string, 可选择float, popup, 默认float</span>\r\n        color<span class=\"token punctuation\">:</span> <span class=\"token double-quoted-string string\">\"#3C8AFF\"</span><span class=\"token punctuation\">,</span> <span class=\"token comment\">//按钮颜色</span>\r\n        https<span class=\"token punctuation\">:</span> <span class=\"token boolean\">false</span><span class=\"token punctuation\">,</span> <span class=\"token comment\">//协议类型,boolean,可选true,false,不填则自适应。</span>\r\n        outage<span class=\"token punctuation\">:</span> <span class=\"token double-quoted-string string\">\"{:url(\'getDownTime\')}\"</span><span class=\"token punctuation\">,</span> <span class=\"token comment\">//服务器端配置的宕机模式接口地址</span>\r\n        checkingAnimation<span class=\"token punctuation\">:</span> <span class=\"token double-quoted-string string\">\"display\"</span><span class=\"token punctuation\">,</span> <span class=\"token comment\">//是否显示智能检测动画, \"hide\"则为隐藏</span>\r\n        success<span class=\"token punctuation\">:</span> <span class=\"token keyword\">function</span><span class=\"token punctuation\">(</span>token<span class=\"token punctuation\">,</span> challenge<span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span> <span class=\"token comment\">//验证成功回调函数, 参数token, challenge 为string, 必填</span>\r\n          <span class=\"token comment\">//执行表单验证失败时，需要重新初始化VAPTCHA</span>\r\n          <span class=\"token comment\">//todo:执行人机验证成功后的操作</span>\r\n          form<span class=\"token punctuation\">.</span>token <span class=\"token operator\">=</span> token<span class=\"token punctuation\">;</span>\r\n          form<span class=\"token punctuation\">.</span>challenge <span class=\"token operator\">=</span> challenge<span class=\"token punctuation\">;</span>\r\n        <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\r\n        fail<span class=\"token punctuation\">:</span> <span class=\"token keyword\">function</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span> <span class=\"token comment\">//验证失败回调函数</span>\r\n          <span class=\"token comment\">//todo:执行人机验证失败后的操作</span>\r\n        <span class=\"token punctuation\">}</span>\r\n      <span class=\"token punctuation\">}</span>\r\n\r\n      window<span class=\"token punctuation\">.</span><span class=\"token function\">vaptcha</span><span class=\"token punctuation\">(</span>config<span class=\"token punctuation\">,</span> <span class=\"token keyword\">function</span><span class=\"token punctuation\">(</span>vaptcha_obj<span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\r\n        obj <span class=\"token operator\">=</span> vaptcha_obj<span class=\"token punctuation\">;</span>\r\n        obj<span class=\"token punctuation\">.</span><span class=\"token function\">init</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n      <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span> <span class=\"token single-quoted-string string\">\'json\'</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n    <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span> <span class=\"token single-quoted-string string\">\'json\'</span><span class=\"token punctuation\">)</span><span aria-hidden=\"true\" class=\"line-numbers-rows\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class=\"toolbar\"><div class=\"toolbar-item\"><a>Copy</a></div></div></div><p><br></p><p>服务器端代码部署:</p><p><span microsoft=\"\" helvetica=\"\" font-size:=\"\" background-color:=\"\">使用接口前需先实例化</span><code liberation=\"\" font-size:=\"\" padding:=\"\" 2px=\"\" 4px=\"\" color:=\"\" background-color:=\"\" border-radius:=\"\" white-space:=\"\">Vaptcha</code></p><div class=\"code-toolbar\"><pre class=\"line-numbers language-php\"><code class=\" language-php\"><span class=\"token keyword\">use</span> <span class=\"token package\">Vaptcha<span class=\"token punctuation\">\\</span>Vaptcha</span><span class=\"token punctuation\">;</span>\r\n\r\n<span class=\"token keyword\">private</span> <span class=\"token variable\">$vaptcha</span><span class=\"token punctuation\">;</span>\r\n<span class=\"token keyword\">public</span> <span class=\"token keyword\">function</span> <span class=\"token function\">__construct</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\r\n<span class=\"token punctuation\">{</span>\r\n    <span class=\"token variable\">$vid</span> <span class=\"token operator\">=</span> <span class=\"token single-quoted-string string\">\'your vid\'</span><span class=\"token punctuation\">;</span>\r\n    <span class=\"token variable\">$key</span> <span class=\"token operator\">=</span> <span class=\"token single-quoted-string string\">\'your key\'</span><span class=\"token punctuation\">;</span>\r\n    <span class=\"token this\">$this</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token property\">vaptcha</span> <span class=\"token operator\">=</span> <span class=\"token keyword\">new</span> <span class=\"token class-name\">Vaptcha</span><span class=\"token punctuation\">(</span><span class=\"token variable\">$vid</span><span class=\"token punctuation\">,</span> <span class=\"token variable\">$key</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span><span class=\"token comment\">// 实例化sdk，$vid 和 $key 对应验证单元中的Vid和Key</span>\r\n<span class=\"token punctuation\">}</span><span aria-hidden=\"true\" class=\"line-numbers-rows\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class=\"toolbar\"><div class=\"toolbar-item\"><a>Copy</a></div></div></div><p>与html代码部署相结合的两个方法：</p><div class=\"code-toolbar\"><pre class=\"line-numbers language-php\"><code class=\" language-php\">    <span class=\"token comment\">/**\r\n     * [getvaptcha 获取流水号接口]\r\n     * @return [type] [description]\r\n     */</span>\r\n    <span class=\"token keyword\">public</span> <span class=\"token keyword\">function</span> <span class=\"token function\">getvaptcha</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\r\n    <span class=\"token punctuation\">{</span>\r\n        <span class=\"token variable\">$challenge</span> <span class=\"token operator\">=</span> <span class=\"token this\">$this</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token property\">vaptcha</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token function\">getChallenge</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n        <span class=\"token keyword\">echo</span> <span class=\"token function\">json_encode</span><span class=\"token punctuation\">(</span><span class=\"token variable\">$challenge</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n        exit<span class=\"token punctuation\">;</span>\r\n    <span class=\"token punctuation\">}</span>\r\n    <span class=\"token comment\">/**\r\n     * [getDownTime 宕机模式]\r\n     * @return [type] [description]\r\n     */</span>\r\n    <span class=\"token keyword\">public</span> <span class=\"token keyword\">function</span> <span class=\"token function\">getDownTime</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\r\n    <span class=\"token punctuation\">{</span>\r\n        <span class=\"token variable\">$data</span> <span class=\"token operator\">=</span> <span class=\"token global\">$_GET</span><span class=\"token punctuation\">[</span><span class=\"token single-quoted-string string\">\'data\'</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">;</span> <span class=\"token comment\">// 客户端sdk以get方式发送数据</span>\r\n        <span class=\"token keyword\">echo</span> <span class=\"token function\">json_encode</span><span class=\"token punctuation\">(</span><span class=\"token this\">$this</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token property\">vaptcha</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token function\">downTime</span><span class=\"token punctuation\">(</span><span class=\"token variable\">$data</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n        exit<span class=\"token punctuation\">;</span>\r\n    <span class=\"token punctuation\">}</span><span aria-hidden=\"true\" class=\"line-numbers-rows\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class=\"toolbar\"><div class=\"toolbar-item\"><a>Copy</a></div></div></div><p>正常加载手势验证码：</p><p><img src=\"https://wubin.pro/Upload/ueditor/image/20180428/1524898293795455.png\" width=\"429\" height=\"307\"></p><p>宕机时显示验证码</p><p><img src=\"https://wubin.pro/Upload/ueditor/image/20180428/1524898294819295.png\" width=\"418\" height=\"384\"></p><p><br></p><p><span label=\"明显强调\">登录进行人机检测</span></p><p>提示消息使用<a href=\"http://layer.layui.com/\" target=\"_blank\" title=\"layer弹出层\">layer弹出层</a><br></p><p>如有需要，请自行引入</p><div class=\"code-toolbar\"><pre class=\"line-numbers language-php\"><code class=\" language-php\"><span class=\"token operator\">&lt;</span>script src<span class=\"token operator\">=</span><span class=\"token double-quoted-string string\">\"https://cdn.bootcss.com/layer/3.1.0/layer.js\"</span><span class=\"token operator\">&gt;</span><span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>script<span class=\"token operator\">&gt;</span><span aria-hidden=\"true\" class=\"line-numbers-rows\"><span></span></span></code></pre><div class=\"toolbar\"><div class=\"toolbar-item\"><a>Copy</a></div></div></div><p><br></p><div class=\"code-toolbar\"><pre class=\"line-numbers language-php\"><code class=\" language-php\"><span class=\"token keyword\">function</span> <span class=\"token function\">post</span><span class=\"token punctuation\">(</span>event<span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\r\n      event<span class=\"token punctuation\">.</span><span class=\"token function\">preventDefault</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n      <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>form<span class=\"token punctuation\">.</span>token<span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\r\n        layer<span class=\"token punctuation\">.</span><span class=\"token function\">alert</span><span class=\"token punctuation\">(</span><span class=\"token single-quoted-string string\">\'请先进行人机验证\'</span><span class=\"token punctuation\">,</span><span class=\"token punctuation\">{</span>icon<span class=\"token punctuation\">:</span><span class=\"token number\">3</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n        <span class=\"token keyword\">return</span> <span class=\"token boolean\">false</span><span class=\"token punctuation\">;</span>\r\n      <span class=\"token punctuation\">}</span>\r\n      form<span class=\"token punctuation\">.</span>username <span class=\"token operator\">=</span> $<span class=\"token punctuation\">(</span><span class=\"token single-quoted-string string\">\'input[name=username]\'</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">.</span><span class=\"token function\">val</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n      form<span class=\"token punctuation\">.</span>password <span class=\"token operator\">=</span> $<span class=\"token punctuation\">(</span><span class=\"token single-quoted-string string\">\'input[name=password]\'</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">.</span><span class=\"token function\">val</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n      $<span class=\"token punctuation\">.</span><span class=\"token function\">post</span><span class=\"token punctuation\">(</span><span class=\"token double-quoted-string string\">\"{:url(\'login\')}\"</span><span class=\"token punctuation\">,</span>form<span class=\"token punctuation\">,</span><span class=\"token keyword\">function</span><span class=\"token punctuation\">(</span>res<span class=\"token punctuation\">)</span><span class=\"token punctuation\">{</span>\r\n          <span class=\"token keyword\">if</span><span class=\"token punctuation\">(</span>res<span class=\"token punctuation\">.</span>code<span class=\"token operator\">==</span><span class=\"token number\">0</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">{</span>\r\n             layer<span class=\"token punctuation\">.</span><span class=\"token function\">alert</span><span class=\"token punctuation\">(</span>res<span class=\"token punctuation\">.</span>msg<span class=\"token punctuation\">,</span><span class=\"token punctuation\">{</span>icon<span class=\"token punctuation\">:</span><span class=\"token number\">3</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n             obj<span class=\"token punctuation\">.</span><span class=\"token function\">init</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span><span class=\"token comment\">//初始化验证码</span>\r\n          <span class=\"token punctuation\">}</span><span class=\"token keyword\">else</span><span class=\"token punctuation\">{</span>\r\n            layer<span class=\"token punctuation\">.</span><span class=\"token function\">alert</span><span class=\"token punctuation\">(</span>res<span class=\"token punctuation\">.</span>msg<span class=\"token punctuation\">,</span><span class=\"token punctuation\">{</span>icon<span class=\"token punctuation\">:</span><span class=\"token number\">6</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n          <span class=\"token punctuation\">}</span>\r\n      <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span><span class=\"token single-quoted-string string\">\'json\'</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n<span class=\"token punctuation\">}</span><span aria-hidden=\"true\" class=\"line-numbers-rows\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class=\"toolbar\"><div class=\"toolbar-item\"><a>Copy</a></div></div></div><p>请求php处理登录<br></p><p>php中处理时需要对验证码进行二次验证</p><div class=\"code-toolbar\"><pre class=\"line-numbers language-php\"><code class=\" language-php\">    <span class=\"token keyword\">public</span> <span class=\"token keyword\">function</span> <span class=\"token function\">login</span><span class=\"token punctuation\">(</span>Request <span class=\"token variable\">$request</span><span class=\"token punctuation\">)</span>\r\n    <span class=\"token punctuation\">{</span>\r\n        <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token variable\">$request</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token function\">isPost</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\r\n            <span class=\"token comment\">//进行二次验证,成功返回true，失败返回false</span>\r\n            <span class=\"token variable\">$validatePass</span> <span class=\"token operator\">=</span> <span class=\"token this\">$this</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token property\">vaptcha</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token function\">validate</span><span class=\"token punctuation\">(</span><span class=\"token variable\">$request</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token property\">challenge</span><span class=\"token punctuation\">,</span> <span class=\"token variable\">$request</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token property\">token</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n            <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span><span class=\"token variable\">$validatePass</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\r\n                <span class=\"token keyword\">return</span> <span class=\"token function\">json</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">[</span><span class=\"token single-quoted-string string\">\'code\'</span><span class=\"token operator\">=</span><span class=\"token operator\">&gt;</span><span class=\"token number\">0</span><span class=\"token punctuation\">,</span><span class=\"token single-quoted-string string\">\'msg\'</span><span class=\"token operator\">=</span><span class=\"token operator\">&gt;</span><span class=\"token single-quoted-string string\">\'请先进行人机验证\'</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n            <span class=\"token punctuation\">}</span>\r\n            <span class=\"token comment\">//比对用户名密码是否正确</span>\r\n            <span class=\"token variable\">$userInfo</span> <span class=\"token operator\">=</span> <span class=\"token function\">db</span><span class=\"token punctuation\">(</span><span class=\"token single-quoted-string string\">\'user\'</span><span class=\"token punctuation\">)</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token function\">where</span><span class=\"token punctuation\">(</span><span class=\"token single-quoted-string string\">\'username\'</span><span class=\"token punctuation\">,</span> <span class=\"token variable\">$request</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token property\">username</span><span class=\"token punctuation\">)</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token function\">where</span><span class=\"token punctuation\">(</span><span class=\"token single-quoted-string string\">\'password\'</span><span class=\"token punctuation\">,</span> <span class=\"token variable\">$request</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token property\">password</span><span class=\"token punctuation\">)</span><span class=\"token operator\">-</span><span class=\"token operator\">&gt;</span><span class=\"token function\">find</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n            <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span><span class=\"token variable\">$userInfo</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\r\n                <span class=\"token keyword\">return</span> <span class=\"token function\">json</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">[</span><span class=\"token single-quoted-string string\">\'code\'</span><span class=\"token operator\">=</span><span class=\"token operator\">&gt;</span><span class=\"token number\">0</span><span class=\"token punctuation\">,</span><span class=\"token single-quoted-string string\">\'msg\'</span><span class=\"token operator\">=</span><span class=\"token operator\">&gt;</span><span class=\"token single-quoted-string string\">\'用户名或密码不正确\'</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n            <span class=\"token punctuation\">}</span>\r\n            <span class=\"token keyword\">return</span> <span class=\"token function\">json</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">[</span><span class=\"token single-quoted-string string\">\'code\'</span><span class=\"token operator\">=</span><span class=\"token operator\">&gt;</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span><span class=\"token single-quoted-string string\">\'msg\'</span><span class=\"token operator\">=</span><span class=\"token operator\">&gt;</span><span class=\"token single-quoted-string string\">\'登录成功\'</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\r\n        <span class=\"token punctuation\">}</span>\r\n    <span class=\"token punctuation\">}</span></code></pre></div>') [ RunTime:0.028219s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001533s ]
+[ sql ] [ SQL ] INSERT INTO `blog_arc_tag` (`arc_id` , `tag_id`) VALUES (109 , 1) [ RunTime:0.031465s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:55:46+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/admin/article/index.html
+[运行时间：0.035302s] [吞吐率：28.33req/s] [内存消耗：2,458.98kb] [文件加载：58]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'article',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654464',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/admin/article/store.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Article->index[ /www/wwwroot/blog_taotaifu_cn/application/admin/controller/Article.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/admin/view/article/index.html [ array (
+  0 => 'field',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001367s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001246s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 LIMIT 1 [ RunTime:0.001067s ]
+[ sql ] [ SQL ] SELECT `a`.`arc_id`,`a`.`arc_title`,`a`.`arc_author`,`a`.`sendtime`,`c`.`cate_name`,`a`.`arc_sort` FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 ORDER BY `a`.`arc_sort` DESC,`a`.`sendtime` DESC,`a`.`arc_id` DESC LIMIT 0,2 [ RunTime:0.001065s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:55:50+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/52.html
+[运行时间：0.062639s] [吞吐率：15.96req/s] [内存消耗：2,494.01kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/48.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '52',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001517s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001867s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.001732s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001326s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001230s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001236s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001542s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.001274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001919s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001141s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001435s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.002237s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001185s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 52 LIMIT 1 [ RunTime:0.000948s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (52) LIMIT 1 [ RunTime:0.001109s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN ('52') [ RunTime:0.003550s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001478s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.001203s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:55:59+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/58.html
+[运行时间：0.052603s] [吞吐率：19.01req/s] [内存消耗：2,424.30kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/52.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '58',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001564s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001649s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000984s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001346s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001231s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001048s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001162s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.001301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001264s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.000985s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001209s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.001230s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.000878s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 58 LIMIT 1 [ RunTime:0.000807s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (58) LIMIT 1 [ RunTime:0.000783s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN ('58') [ RunTime:0.001027s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001187s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 108 [ RunTime:0.000938s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:56:00+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/57.html
+[运行时间：0.063113s] [吞吐率：15.84req/s] [内存消耗：2,434.66kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/58.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '57',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001483s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001584s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.002191s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001458s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001158s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001070s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001500s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.001075s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001594s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001203s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001309s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.001041s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001403s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 57 LIMIT 1 [ RunTime:0.001016s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (57) LIMIT 1 [ RunTime:0.000964s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN ('57') [ RunTime:0.001255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001349s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 107 [ RunTime:0.000989s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:56:01+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/53.html
+[运行时间：0.056047s] [吞吐率：17.84req/s] [内存消耗：2,429.20kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/57.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '53',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001325s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001169s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000936s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001321s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001069s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001169s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001729s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000895s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001549s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001183s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001388s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000978s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001544s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 53 LIMIT 1 [ RunTime:0.000977s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (53) LIMIT 1 [ RunTime:0.000942s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN ('53') [ RunTime:0.001349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001422s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.001395s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:56:03+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/44.html
+[运行时间：0.272131s] [吞吐率：3.67req/s] [内存消耗：2,594.13kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/53.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '44',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001467s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001390s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000901s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001304s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001042s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001051s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001353s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000881s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001948s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001093s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001331s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000969s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001150s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 44 LIMIT 1 [ RunTime:0.000896s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (50,52,44) LIMIT 1 [ RunTime:0.000968s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN (50,52,'44') [ RunTime:0.205773s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001530s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 105 [ RunTime:0.001075s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 101 [ RunTime:0.001020s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.001003s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:56:03+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/upload/20190309/2c9eca9a07b51db06b86ebb4b65c226b.png
+[运行时间：0.019171s] [吞吐率：52.16req/s] [内存消耗：1,297.20kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/44.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T20:56:06+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/43.html
+[运行时间：0.060458s] [吞吐率：16.54req/s] [内存消耗：2,529.91kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/44.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '43',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001518s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001757s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000997s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001335s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001471s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001086s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001353s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000884s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001290s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001113s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001317s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000946s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001170s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 43 LIMIT 1 [ RunTime:0.000900s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (46,47,48,43) LIMIT 1 [ RunTime:0.001029s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN (46,47,48,'43') [ RunTime:0.002903s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001402s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 104 [ RunTime:0.001103s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 103 [ RunTime:0.000971s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:56:09+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/index.html
+[运行时间：0.718795s] [吞吐率：1.39req/s] [内存消耗：2,741.08kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/43.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/index/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'field',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001537s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001333s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000933s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001626s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001145s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001137s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001317s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000935s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001330s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001190s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001352s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.001037s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2 ORDER BY `sendtime` DESC [ RunTime:0.652799s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001413s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 104 [ RunTime:0.001170s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 101 [ RunTime:0.001086s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.000992s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 107 [ RunTime:0.002853s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 108 [ RunTime:0.001614s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.001021s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 103 [ RunTime:0.000978s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 105 [ RunTime:0.000945s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 LIMIT 1 [ RunTime:0.001257s ]
+[ sql ] [ SQL ] SELECT `a`.`arc_id`,`a`.`arc_title`,`a`.`arc_author`,`a`.`sendtime`,`c`.`cate_name`,`a`.`arc_sort` FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 ORDER BY `a`.`arc_sort` DESC,`a`.`sendtime` DESC,`a`.`arc_id` DESC LIMIT 0,2 [ RunTime:0.001334s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:56:14+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/index.html
+[运行时间：0.715537s] [吞吐率：1.40req/s] [内存消耗：2,741.08kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/43.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/index/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'field',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001333s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001258s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000953s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001389s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.000908s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000941s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001763s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000951s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001197s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.000950s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001120s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000938s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2 ORDER BY `sendtime` DESC [ RunTime:0.656505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001351s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 104 [ RunTime:0.000977s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 101 [ RunTime:0.000893s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.000886s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 107 [ RunTime:0.000936s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 108 [ RunTime:0.000846s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.000831s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 103 [ RunTime:0.001007s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 105 [ RunTime:0.000922s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 LIMIT 1 [ RunTime:0.001085s ]
+[ sql ] [ SQL ] SELECT `a`.`arc_id`,`a`.`arc_title`,`a`.`arc_author`,`a`.`sendtime`,`c`.`cate_name`,`a`.`arc_sort` FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 ORDER BY `a`.`arc_sort` DESC,`a`.`sendtime` DESC,`a`.`arc_id` DESC LIMIT 0,2 [ RunTime:0.001094s ]
+---------------------------------------------------------------
+[ 2019-03-15T20:56:14+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/upload/20190309/2c9eca9a07b51db06b86ebb4b65c226b.png
+[运行时间：0.019579s] [吞吐率：51.08req/s] [内存消耗：1,297.20kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/index.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T20:59:59+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/
+[运行时间：0.729163s] [吞吐率：1.37req/s] [内存消耗：2,739.08kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=600',
+  'x-client-switch-rtt' => '5237',
+  'cdn-src-ip' => '223.72.99.31',
+  'x-forwarded-for' => '223.72.99.31',
+  'x-remove-iphost' => '0',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'starttime' => '1552654798292',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; vivo X20A Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36 VivoBrowser/6.2.0.0',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/index/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'field',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001576s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001451s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000951s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001332s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.000958s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000952s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001298s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000899s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001285s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001072s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001300s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000898s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2 ORDER BY `sendtime` DESC [ RunTime:0.657503s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001335s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 104 [ RunTime:0.001028s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 101 [ RunTime:0.000926s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.000919s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 107 [ RunTime:0.000994s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 108 [ RunTime:0.000905s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.000926s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 103 [ RunTime:0.000964s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 105 [ RunTime:0.001020s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 LIMIT 1 [ RunTime:0.001051s ]
+[ sql ] [ SQL ] SELECT `a`.`arc_id`,`a`.`arc_title`,`a`.`arc_author`,`a`.`sendtime`,`c`.`cate_name`,`a`.`arc_sort` FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 ORDER BY `a`.`arc_sort` DESC,`a`.`sendtime` DESC,`a`.`arc_id` DESC LIMIT 0,2 [ RunTime:0.001239s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:00:07+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/upload/20190309/2c9eca9a07b51db06b86ebb4b65c226b.png
+[运行时间：0.020077s] [吞吐率：49.81req/s] [内存消耗：1,287.53kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; vivo X20A Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36 VivoBrowser/6.2.0.0',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T21:00:17+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/
+[运行时间：1.086084s] [吞吐率：0.92req/s] [内存消耗：2,739.26kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=600',
+  'x-client-switch-rtt' => '5002',
+  'cdn-src-ip' => '223.72.99.31',
+  'x-forwarded-for' => '223.72.99.31',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+  'x-remove-iphost' => '0',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'starttime' => '1552654816380',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; vivo X20A Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36 VivoBrowser/6.2.0.0',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/index/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'field',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001303s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001299s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000848s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001371s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001039s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001209s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001397s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000902s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001678s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001369s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001185s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000907s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2 ORDER BY `sendtime` DESC [ RunTime:1.027193s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001466s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 104 [ RunTime:0.001167s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 101 [ RunTime:0.001126s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.000989s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 107 [ RunTime:0.001027s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 108 [ RunTime:0.000939s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.000861s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 103 [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 105 [ RunTime:0.000890s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 LIMIT 1 [ RunTime:0.001038s ]
+[ sql ] [ SQL ] SELECT `a`.`arc_id`,`a`.`arc_title`,`a`.`arc_author`,`a`.`sendtime`,`c`.`cate_name`,`a`.`arc_sort` FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 ORDER BY `a`.`arc_sort` DESC,`a`.`sendtime` DESC,`a`.`arc_id` DESC LIMIT 0,2 [ RunTime:0.001233s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:00:17+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/upload/20190309/2c9eca9a07b51db06b86ebb4b65c226b.png
+[运行时间：0.017053s] [吞吐率：58.64req/s] [内存消耗：1,287.71kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; vivo X20A Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36 VivoBrowser/6.2.0.0',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T21:01:16+08:00 ] 183.192.164.85 GET blog.taotaifu.cn/
+[运行时间：0.766308s] [吞吐率：1.30req/s] [内存消耗：2,734.68kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; HUAWEI ALE-CL00 Build/HuaweiALE-CL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.3.0.907 Mobile Safari/537.36',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/index/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'field',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002076s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001284s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000908s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001252s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.000959s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000893s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001195s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000828s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001184s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001045s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001149s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000910s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2 ORDER BY `sendtime` DESC [ RunTime:0.702781s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001779s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 104 [ RunTime:0.001311s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 101 [ RunTime:0.001155s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.001246s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 107 [ RunTime:0.001268s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 108 [ RunTime:0.001149s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.001157s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 103 [ RunTime:0.001129s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 105 [ RunTime:0.001397s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 LIMIT 1 [ RunTime:0.001382s ]
+[ sql ] [ SQL ] SELECT `a`.`arc_id`,`a`.`arc_title`,`a`.`arc_author`,`a`.`sendtime`,`c`.`cate_name`,`a`.`arc_sort` FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 ORDER BY `a`.`arc_sort` DESC,`a`.`sendtime` DESC,`a`.`arc_id` DESC LIMIT 0,2 [ RunTime:0.001576s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:01:23+08:00 ] 61.151.178.165 GET blog.taotaifu.cn/
+[运行时间：0.714181s] [吞吐率：1.40req/s] [内存消耗：2,735.98kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'accept-language' => 'en,*',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; MX4 Pro Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30',
+  'referer' => '',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/index/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'field',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001740s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001458s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.001093s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001189s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001077s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000991s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001147s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000897s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.002309s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001070s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001217s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000928s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2 ORDER BY `sendtime` DESC [ RunTime:0.652511s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001508s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 104 [ RunTime:0.001122s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 101 [ RunTime:0.000991s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.000992s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 107 [ RunTime:0.001042s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 108 [ RunTime:0.000965s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.000918s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 103 [ RunTime:0.001065s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 105 [ RunTime:0.001586s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 LIMIT 1 [ RunTime:0.001268s ]
+[ sql ] [ SQL ] SELECT `a`.`arc_id`,`a`.`arc_title`,`a`.`arc_author`,`a`.`sendtime`,`c`.`cate_name`,`a`.`arc_sort` FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 5 ORDER BY `a`.`arc_sort` DESC,`a`.`sendtime` DESC,`a`.`arc_id` DESC LIMIT 0,2 [ RunTime:0.001400s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:01:24+08:00 ] 61.151.178.165 GET blog.taotaifu.cn/upload/20190309/2c9eca9a07b51db06b86ebb4b65c226b.png
+[运行时间：0.016716s] [吞吐率：59.82req/s] [内存消耗：1,286.94kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'accept-language' => 'en,*',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; MX4 Pro Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30',
+  'referer' => 'http://blog.taotaifu.cn/',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T21:02:05+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/43.html
+[运行时间：0.061936s] [吞吐率：16.15req/s] [内存消耗：2,529.91kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '43',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001515s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001536s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.001100s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001292s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001055s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001007s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001237s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000909s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001387s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001019s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001256s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000855s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001052s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 43 LIMIT 1 [ RunTime:0.000953s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (46,47,48,43) LIMIT 1 [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN (46,47,48,'43') [ RunTime:0.003306s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001661s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 104 [ RunTime:0.001575s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 103 [ RunTime:0.000926s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:02:09+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/44.html
+[运行时间：0.261320s] [吞吐率：3.83req/s] [内存消耗：2,594.13kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/43.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '44',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001348s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001856s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000937s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001287s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001214s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000996s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001342s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000891s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001492s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001096s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001321s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000935s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001195s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 44 LIMIT 1 [ RunTime:0.000950s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (50,52,44) LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN (50,52,'44') [ RunTime:0.205573s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001345s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 105 [ RunTime:0.001304s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 101 [ RunTime:0.000884s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 109 [ RunTime:0.000980s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:02:09+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/upload/20190309/2c9eca9a07b51db06b86ebb4b65c226b.png
+[运行时间：0.018140s] [吞吐率：55.13req/s] [内存消耗：1,297.20kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/44.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T21:02:09+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/53.html
+[运行时间：0.058029s] [吞吐率：17.23req/s] [内存消耗：2,429.20kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/44.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '53',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001577s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001490s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.001074s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001282s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001263s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000988s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001290s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.001082s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001683s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001503s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001196s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.001058s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001301s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 53 LIMIT 1 [ RunTime:0.001063s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (53) LIMIT 1 [ RunTime:0.000940s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN ('53') [ RunTime:0.001296s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001428s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.001218s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:02:11+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/53.html
+[运行时间：0.053588s] [吞吐率：18.66req/s] [内存消耗：2,429.20kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/53.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '53',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001324s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001464s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.001110s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001664s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001079s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001052s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001536s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001519s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001207s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001259s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000923s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001047s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 53 LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (53) LIMIT 1 [ RunTime:0.001124s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN ('53') [ RunTime:0.001232s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001337s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.000984s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:02:12+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/58.html
+[运行时间：0.062070s] [吞吐率：16.11req/s] [内存消耗：2,424.30kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/53.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '58',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001792s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001349s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000903s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.002586s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001300s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001158s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001351s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000934s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001472s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001010s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001510s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.001041s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.001169s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 58 LIMIT 1 [ RunTime:0.001092s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (58) LIMIT 1 [ RunTime:0.000966s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN ('58') [ RunTime:0.001326s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001467s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 108 [ RunTime:0.001173s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:02:13+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/c/57.html
+[运行时间：0.058403s] [吞吐率：17.12req/s] [内存消耗：2,434.66kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'lists',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/58.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'cate_id' => '57',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Lists->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Lists.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/lists/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'headData',
+  8 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001518s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001389s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000975s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001333s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001439s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001054s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001432s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.001029s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001640s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001713s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.001075s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 57 LIMIT 1 [ RunTime:0.000929s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (57) LIMIT 1 [ RunTime:0.000920s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN ('57') [ RunTime:0.001135s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001318s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 107 [ RunTime:0.001043s ]
+---------------------------------------------------------------
+[ 2019-03-15T21:02:15+08:00 ] 223.72.99.31 GET blog.taotaifu.cn/about_me.html
+[运行时间：0.046954s] [吞吐率：21.30req/s] [内存消耗：2,416.09kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'about',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=169335cc0f6403-0c6272b18d54cb-5701732-13c680-169335cc0f85c1; _ga=GA1.2.862109310.1552201355; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1552113754,1552627990,1552641718; CNZZDATA1261722476=4520637-1551342211-null%7C1552650705; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1552654548',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://blog.taotaifu.cn/c/57.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\About->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/About.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/about/index.html [ array (
+  0 => 'headConf',
+  1 => 'headData',
+  2 => 'articleData',
+  3 => '_webset',
+  4 => '_cateData',
+  5 => '_allCateData',
+  6 => '_tagData',
+  7 => '_articleData',
+  8 => '_linkData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001297s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001484s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` [ RunTime:0.000898s ]
+[ sql ] [ SQL ] SELECT `cate_name` FROM `blog_cate` WHERE  `cate_id` = 1 LIMIT 1 [ RunTime:0.000846s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001720s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` WHERE  `cate_id` IN (1) LIMIT 1 [ RunTime:0.000892s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2  AND `a`.`cate_id` IN (1) [ RunTime:0.000984s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001186s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000891s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.000942s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000895s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001209s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000860s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001306s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000901s ]
+---------------------------------------------------------------
+[ 2019-03-15T23:51:11+08:00 ] 203.208.60.23 GET blog.taotaifu.cn/wp-content/themes/twentysixteen/style.css?ver=5.0.2
+[运行时间：0.022718s] [吞吐率：44.02req/s] [内存消耗：1,287.73kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/css,*/*;q=0.1',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:12+08:00 ] 203.208.60.101 GET blog.taotaifu.cn/wp-includes/js/jquery/jquery.js?ver=1.12.4
+[运行时间：0.018535s] [吞吐率：53.95req/s] [内存消耗：1,287.66kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:12+08:00 ] 203.208.60.38 GET blog.taotaifu.cn/wp-content/themes/twentysixteen/genericons/genericons.css?ver=3.4.1
+[运行时间：0.017879s] [吞吐率：55.93req/s] [内存消耗：1,287.76kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/css,*/*;q=0.1',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:13+08:00 ] 203.208.60.70 GET blog.taotaifu.cn/wp-includes/css/dist/block-library/style.min.css?ver=5.0.2
+[运行时间：0.016313s] [吞吐率：61.30req/s] [内存消耗：1,287.73kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/css,*/*;q=0.1',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:13+08:00 ] 203.208.60.35 GET blog.taotaifu.cn/wp-content/themes/twentysixteen/css/blocks.css?ver=20181018
+[运行时间：0.016285s] [吞吐率：61.41req/s] [内存消耗：1,287.73kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/css,*/*;q=0.1',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:14+08:00 ] 203.208.60.22 GET blog.taotaifu.cn/wp-includes/css/dist/block-library/theme.min.css?ver=5.0.2
+[运行时间：0.015196s] [吞吐率：65.81req/s] [内存消耗：1,287.73kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/css,*/*;q=0.1',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:14+08:00 ] 203.208.60.73 GET blog.taotaifu.cn/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1
+[运行时间：0.014313s] [吞吐率：69.87req/s] [内存消耗：1,287.70kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:15+08:00 ] 203.208.60.95 GET blog.taotaifu.cn/wp-content/themes/twentysixteen/js/functions.js?ver=20160816
+[运行时间：0.015866s] [吞吐率：63.03req/s] [内存消耗：1,287.70kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:15+08:00 ] 203.208.60.60 GET blog.taotaifu.cn/wp-content/themes/twentysixteen/js/skip-link-focus-fix.js?ver=20160816
+[运行时间：0.014610s] [吞吐率：68.45req/s] [内存消耗：1,287.73kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:16+08:00 ] 203.208.60.122 GET blog.taotaifu.cn/wp-includes/js/wp-emoji-release.min.js?ver=5.0.2
+[运行时间：0.015257s] [吞吐率：65.54req/s] [内存消耗：1,287.70kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-03-15T23:51:16+08:00 ] 203.208.60.54 GET blog.taotaifu.cn/wp-includes/js/wp-embed.min.js?ver=5.0.2
+[运行时间：0.018602s] [吞吐率：53.76req/s] [内存消耗：1,287.66kb] [文件加载：40]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'referer' => 'http://blog.taotaifu.cn/2019/01/12/',
+  'accept-language' => 'en-US',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File

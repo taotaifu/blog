@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{$headConf['title']}</title>
+</head>
+<link href="__STATIC__/index/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/common.css" />
+<link href="__STATIC__/index/logo.jpg" rel="shortcut icon" />
+<script src="__STATIC__/index/plugin/jquery.min.js"></script>
+<script src="__STATIC__/index/plugin/bootstrap/js/bootstrap.min.js"></script>
+<body>
+<!--头部-->
+<div class="w_header">
+    <div class="container">
+        <div class="w_header_top">
+			<span class="w_header_nav">
+					<ul>
+						<!--class="active" 用js给-->
+						<!--<li style="width: 220px"><a href="#"><img style="height: 55px;width: 220px; position: absolute; top:0px;left: 222px"src="__STATIC__/index/logo.jpg" alt="网站Logo"></a></li>-->
+						<li if{ condition="!input('param.')}class="active"{/if}><a href="__ROOT__/index.html">首页</a></li>
+                        {foreach name='_cateData' item='vo'}
+						<li if{ condition="input('param.cate_id')==$vo['cate_id']"} class="active"{/if}><a href="{$vo.cate_url}">{$vo['cate_name']}</a></li>
+                        {/foreach}
+                        <!--<li if{ condition="!input('param.')}class="active"{/if}><a href="{:url('About/index')}">关于我</a></li>-->
+					</ul>
+				</span>
+            <div class="w_search">
+                <div class="w_searchbox search">
+                    <form action="{:url('Search/index')}"  name="form" id="form" method="get">
+                    <input type="text" name="keywords" class="keywords" id="textfield" placeholder="请输入搜索词" maxlength="80" />
+                    <button>搜索</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--头部结束-->
+<!--中间内容-->
+<div class="w_container">
+    <div class="container">
+        <div class="row w_main_row">
+            <!--中间左侧开始-->
+            <div class="col-lg-9 col-md-9 w_main_left">
+               {block name='content'}{/block}
+            </div>
+            <!--中间左侧结束-->
+            <!--中间右侧开始-->
+            <div class="col-lg-3 col-md-3 w_main_right">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">热门标签</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="labelList">
+                            {foreach name='_tagData' item='vo'}
+                            <a class="label label-default x-red" href="{:url('index/lists/index',['tag_id'=>$vo['tag_id']])}">{$vo['tag_name']}</a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">分类栏目</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="labelList">
+                            {foreach name='_allCateData' item='vo'}
+                            <a class="label label-default" href="{:url('index/lists/index',['cate_id'=>$vo['cate_id']])}">{$vo['cate_name']}</a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">最新发布</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled sidebar">
+                            {foreach name='_articleData' item='vo'}
+                            <li>
+                                <a href="{:url('index/content/index',['arc_id'=>$vo['arc_id']])}">{$vo['arc_title']}</a>
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">友情链接</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="newContent">
+                            <ul class="list-unstyled sidebar shiplink">
+                                {foreach name='_linkData' item='vo'}
+                                <li>
+                                    <a href="{$vo['link_url']}" target="_blank">{$vo['link_name']}</a>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default whitebg wenzi">
+                    <div class="panel-heading">
+                        <h3 class="panel-title htitle">最新评论</h3>
+                    </div>
+                    <ul>
+                        {foreach name='_articleData' item='vo'}
+                        <li style="margin-top: 10px"><a target="_blank" href="/blog/3.html">{$vo['arc_title']}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <!--右侧结束-->
+        </div>
+    </div>
+</div>
+<!--中间内容结束-->
+<!--底部开始-->
+<div class="w_foot">
+    <div class="w_foot_copyright">Copyright© 2017 <a target="_blank" href="http://www.miitbeian.gov.cn/" rel="nofollow" style="color:green">京ICP备18055675号-1</a>&nbsp;&nbsp;网址：<a href="http://blog.taotaifu.cn">blog.taotaifu.cn</a> 陶太富 版权所有 {$_webset['email']} <span>|</span>
+        <span id="cnzz_stat_icon_1261722476"><a href="https://www.cnzz.com/stat/website.php?web_id=1261722476" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="https://icon.cnzz.com/img/pic.gif"></a></span>
+        <script src=" https://s11.cnzz.com/z_stat.php?id=1261722476&amp;show=pic" type="text/javascript"></script>
+        <script src="https://c.cnzz.com/core.php?web_id=1261722476&amp;show=pic&amp;t=z" charset="utf-8" type="text/javascript"></script>
+        <a target="_blank" href="https://tongji.baidu.com/web/welcome/ico?s=a4535105572471f305ae4fac98e7be00">百度统计</a>
+    </div>
+</div>
+<!--toTop-->
+<div id="shape">
+    <div class="shapeColor">
+        <div class="shapeFly">
+        </div>
+    </div>
+</div>
+<!--底部结束-->
+</body>
+<script type="text/javascript">
+    var $backToTopEle = $('<a href="javascript:void(0)" class="Hui-iconfont toTop" title="返回顶部" alt="返回顶部" style="display:none">^</a>').appendTo($("body")).click(function() {
+        $("html, body").animate({ scrollTop: 0 }, 120);
+    });
+    var backToTopFun = function() {
+        var st = $(document).scrollTop(),
+            winh = $(window).height();
+        (st > 0) ? $backToTopEle.show(): $backToTopEle.hide();
+        /*IE6下的定位*/
+        if(!window.XMLHttpRequest) {
+            $backToTopEle.css("top", st + winh - 166);
+        }
+    };
+
+    $(function() {
+        $(window).on("scroll", backToTopFun);
+        backToTopFun();
+    });
+</script>
+</html>

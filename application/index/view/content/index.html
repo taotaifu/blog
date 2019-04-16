@@ -1,0 +1,61 @@
+{extend name='base'/}
+{block name='content'}
+<div class="article panel panel-default">
+    <div class="panel-body">
+        <h3 class="c_titile" style="text-align:center">{$articleData['arc_title']}</h3>
+        <p class="box_c"style="text-align:center" ><span class="d_time">发布时间：{:date('Y-m-d',$articleData['sendtime'])}</span>&nbsp;&nbsp;<span>编辑：<a href="">{$articleData['arc_author']}</a></span>&nbsp;</p>
+        <ul class="infos">
+            <p>{$articleData['arc_content']}</p>
+        <div class="keybq">
+            <p><span>标签</span>：
+                {foreach name="articleData['tags']" item='vo'}
+                <a href="{:url('index/lists/index',['tag_id'=>$vo['tag_id']])}" class="label label-default">{$vo['tag_name']}</a>
+                {/foreach}
+            </p>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <center><div id="cyReward" role="cylabs" data-use="reward" sid="5eab7e4c363e4cb8bed0efa3604e6b42"></div></center>
+        <!--<div id="cyEmoji" role="cylabs" data-use="emoji" sid="5eab7e4c363e4cb8bed0efa3604e6b42"></div>-->
+        <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+        <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysPwLFm1"></script>
+        <hr>
+         <div style="color: red">
+             <p>本站文章除注明转载外，均为本站原创或编译。欢迎任何形式的转载，但请务必注明出处，尊重他人劳动。</p>
+             <p style="color:#00b7ee">陶太富博客 <a href="http://blog.taotaifu.cn" style="color: red">http://blog.taotaifu.cn</a></p>
+         </div>
+        <div class="nextinfo">
+            <p class="last">上一篇：<a href="#">{$articleData['arc_title']}</a></p>
+            <p class="next">下一篇：<a href="#">javascript显示年月日时间代码</a></p>
+        </div>
+        <!--PC版-->
+        <div id="SOHUCS" sid="5eab7e4c363e4cb8bed0efa3604e6b42"></div>
+        <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+        <script type="text/javascript">
+        window.changyan.api.config({
+        appid: 'cysPwLFm1',
+        conf: 'prod_6c6350e206c502f569b865b4bf121e60'
+        });
+        </script>
+        <!-- 多说评论框 start -->
+        <div class="ds-thread" data-thread-key="testarticle" data-title="我的个人博客之——阿里云空间选择" data-url="http://127.0.0.1:8020/wilco/article_detail.html"></div>
+        <!-- 多说评论框 end -->
+        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+        <script type="text/javascript">
+            var duoshuoQuery = {short_name:"wfyvv"};
+            (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';ds.async = true;
+                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+        </script>
+        <!-- 多说公共JS代码 end -->
+
+    </div>
+</div>
+{/block}

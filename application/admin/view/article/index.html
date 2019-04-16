@@ -1,0 +1,107 @@
+{extend name='base'/}
+{block name='content'}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a>
+          <cite>文章列表</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <blockquote class="layui-elem-quote">每个tr 上有两个属性 cate-id='1' 当前分类id fid='0' 父级id ,顶级分类为 0，有子分类的前面加收缩图标<i class="layui-icon x-show" status='true'>&#xe623;</i></blockquote>
+    <xblock>
+        <a href="{:url('index')}" class="layui-btn layui-btn-danger">文章列表</a>
+        <a href="{:url('store')}" class="layui-btn layui-btn-danger">添加文章</a>
+        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+    </xblock>
+    <form action="" method="post">
+        <table class="layui-table layui-form">
+            <thead>
+            <tr>
+                <th width="20">
+                    <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                </th>
+                <th width="50">ID</th>
+                <th width="250">文章名称</th>
+                <th width="250">文章作者</th>
+                <th width="50">排序</th>
+                <th width="150">所属分类</th>
+                <th width="220">添加时间</th>
+                <th width="220">操作</th>
+            </thead>
+            <tbody class="x-cate">
+            {foreach name='field' item='vo'}
+            <tr cate-id='1' fid='0' >
+                <td>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                </td>
+                <td>{$vo['arc_id']}</td>
+                <td>
+                    <i class="layui-icon x-show" status='true'>&#xe623;</i>
+                    {$vo['arc_title']}
+                </td>
+                <td>
+                    <i class="layui-icon x-show" status='true'>&#xe623;</i>
+                    {$vo['arc_author']}
+                </td>
+                <td>
+                    <input type="text" class="layui-input x-sort" name="order" value="{$vo['arc_sort']}" onblur="changeSort(this,{$vo['arc_id']})">
+                </td>
+                <td>
+                    <i class="layui-icon x-show" status='true'>&#xe623;</i>
+                    {$vo['cate_name']}
+                </td>
+                <td>
+                    <i class="layui-icon x-show" status='true'>&#xe623;</i>
+                    {:date('Y-m-d',$vo['sendtime'])}
+                </td>
+                <td class="td-manage">
+                    <a class="layui-btn layui-btn layui-btn-xs"  href="{:url('edit',['arc_id'=>$vo['arc_id']])}" ><i class="layui-icon">&#xe642;</i>编辑</a>
+                    <a class="layui-btn-danger layui-btn layui-btn-xs" href="{:url('delToRecycle',['arc_id'=>$vo['arc_id']])}"><i class="layui-icon">&#xe640;</i>删除到回收站</a>
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </form>
+    <div class="page" style="margin-left: 150px">
+        <div>
+            {$field->render()}
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function changeSort(obj,arc_id) {
+        // 获取修改之后的排序值
+       var arc_sort = $(obj).val();
+       // alert(sort);
+       // alert(arc_id);
+        $.post("{:url('changeSort')}",{arc_sort:arc_sort,arc_id:arc_id},function(res){
+
+            if (res.code){
+                 // 执行成功
+                util.message(res.msg,'refresh','success');
+            }else{
+                // 执行失败
+                util.message(res.msg,'back','error');
+            }
+
+        },'json')
+    }
+
+
+
+    // 单个删除
+    function del(article_id){
+        layer.confirm('确认要删除吗 ？',function(index){
+            //发异步删除数据
+            // alert(id);
+            location.href="{:url('del')}"+'?article_id='+article_id;
+        });
+    }
+</script>
+{/block}

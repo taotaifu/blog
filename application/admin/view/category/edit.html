@@ -1,0 +1,66 @@
+{extend name='base'/}
+{block name='content'}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a>
+          <cite>栏目编辑</cite></a>
+      </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+  <blockquote class="layui-elem-quote">每个tr 上有两个属性 cate-id='1' 当前分类id fid='0' 父级id ,顶级分类为 0，有子分类的前面加收缩图标<i class="layui-icon x-show" status='true'>&#xe623;</i></blockquote>
+  <xblock>
+    <a href="{:url('index')}" class="layui-btn layui-btn-danger">栏目列表</a>
+    <a href="" class="layui-btn layui-btn-danger">栏目编辑</a>
+    <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+  </xblock>
+
+  <div class="x-body">
+    <form class="layui-form" id="form" action="" method="post">
+      <div class="layui-form-item">
+        <label for="cate_name" class="layui-form-label">
+          栏目名称
+        </label>
+        <div class="layui-input-inline">
+          <input type="text" id="cate_name" value="{$oldData['cate_name']}" name="cate_name"
+                 autocomplete="off"  class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label for="cate_pid" class="layui-form-label">
+          所属栏目
+        </label>
+        <div class="layui-input-inline">
+          <select type="text"  id="cate_pid" name="cate_pid" autocomplete="off" class="layui-input">
+             <option value="0">顶级栏目</option>
+            {foreach name='cateData' item='vo'}
+               <option {if condition="$oldData['cate_pid']==$vo['cate_id']"}selected{/if} value="{$vo['cate_id']}">{$vo['_cate_name']}</option>
+            {/foreach}
+          </select>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label for="cate_sort" class="layui-form-label">
+          栏目排序
+        </label>
+        <div class="layui-input-inline">
+          <input type="text"  id="cate_sort" value="{$oldData['cate_sort']}" name="cate_sort" l
+                 autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label  class="layui-form-label">
+        </label>
+        <input type="hidden" name="cate_id" value="{:input('param.cate_id')}">
+        <button  class="layui-btn" type="submit" >
+          修改
+        </button>
+      </div>
+     </form>
+    </div>
+</div>
+</body>
+{/block}
