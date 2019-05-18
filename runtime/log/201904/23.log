@@ -1,0 +1,274 @@
+---------------------------------------------------------------
+[ 2019-04-23T01:32:49+08:00 ] 42.120.161.51 GET blog.taotaifu.cn/w/137.html
+[运行时间：0.065008s] [吞吐率：15.38req/s] [内存消耗：2,358.87kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'content',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 YisouSpider/5.0 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'blog.taotaifu.cn',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'arc_id' => '137',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Content->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Content.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/content/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001278s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001352s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001151s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001100s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000837s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001159s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000774s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001171s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001771s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001189s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000855s ]
+[ sql ] [ SQL ] UPDATE `blog_article`  SET `arc_click`=`arc_click`+1  WHERE  `arc_id` = 137 [ RunTime:0.019251s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title`,`arc_author`,`arc_content`,`sendtime` FROM `blog_article` WHERE  `arc_id` = 137 LIMIT 1 [ RunTime:0.001445s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001228s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 137 LIMIT 3 [ RunTime:0.000881s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` WHERE  `arc_id` = 137 LIMIT 1 [ RunTime:0.001306s ]
+---------------------------------------------------------------
+[ 2019-04-23T12:43:45+08:00 ] 140.207.54.78 POST blog.taotaifu.cn/index/wechat/validate_token?signature=e16951360e71285130ed2768704028efd9d1a704&timestamp=1555994625&nonce=1564641923&openid=oTDNi1pNX3UyZZZeEQdIg5gzG9T8&encrypt_type=aes&msg_signature=2660370b2e36c176376558872862a97ac197224b
+[运行时间：0.569618s] [吞吐率：1.76req/s] [内存消耗：1,329.75kb] [文件加载：39]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'wechat',
+    2 => 'validate_token',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'text/xml',
+  'content-length' => '817',
+  'pragma' => 'no-cache',
+  'host' => 'blog.taotaifu.cn',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/4.0',
+)
+[ info ] [ PARAM ] array (
+  'signature' => 'e16951360e71285130ed2768704028efd9d1a704',
+  'timestamp' => '1555994625',
+  'nonce' => '1564641923',
+  'openid' => 'oTDNi1pNX3UyZZZeEQdIg5gzG9T8',
+  'encrypt_type' => 'aes',
+  'msg_signature' => '2660370b2e36c176376558872862a97ac197224b',
+)
+[ info ] [ RUN ] app\index\controller\Wechat->validate_token[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Wechat.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-04-23T12:43:48+08:00 ] 140.207.54.77 POST blog.taotaifu.cn/index/wechat/validate_token?signature=19c6d9d1a4734d835e35d55b2dd98de8e09c9016&timestamp=1555994627&nonce=290938611&openid=oTDNi1pNX3UyZZZeEQdIg5gzG9T8&encrypt_type=aes&msg_signature=41792328b7864d39fc345904b352d9fdaba7a8c2
+[运行时间：0.183108s] [吞吐率：5.46req/s] [内存消耗：1,329.75kb] [文件加载：39]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'wechat',
+    2 => 'validate_token',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'text/xml',
+  'content-length' => '767',
+  'pragma' => 'no-cache',
+  'host' => 'blog.taotaifu.cn',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/4.0',
+)
+[ info ] [ PARAM ] array (
+  'signature' => '19c6d9d1a4734d835e35d55b2dd98de8e09c9016',
+  'timestamp' => '1555994627',
+  'nonce' => '290938611',
+  'openid' => 'oTDNi1pNX3UyZZZeEQdIg5gzG9T8',
+  'encrypt_type' => 'aes',
+  'msg_signature' => '41792328b7864d39fc345904b352d9fdaba7a8c2',
+)
+[ info ] [ RUN ] app\index\controller\Wechat->validate_token[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Wechat.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-04-23T12:44:00+08:00 ] 140.207.54.78 POST blog.taotaifu.cn/index/wechat/validate_token?signature=863e7a6f5a8c78c6ef95888321c80bcda147b096&timestamp=1555994640&nonce=331811658&openid=oTDNi1pNX3UyZZZeEQdIg5gzG9T8&encrypt_type=aes&msg_signature=769431594255663f599065051997515d43c55b77
+[运行时间：0.015886s] [吞吐率：62.95req/s] [内存消耗：1,330.13kb] [文件加载：39]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'wechat',
+    2 => 'validate_token',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'text/xml',
+  'content-length' => '1077',
+  'pragma' => 'no-cache',
+  'host' => 'blog.taotaifu.cn',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/4.0',
+)
+[ info ] [ PARAM ] array (
+  'signature' => '863e7a6f5a8c78c6ef95888321c80bcda147b096',
+  'timestamp' => '1555994640',
+  'nonce' => '331811658',
+  'openid' => 'oTDNi1pNX3UyZZZeEQdIg5gzG9T8',
+  'encrypt_type' => 'aes',
+  'msg_signature' => '769431594255663f599065051997515d43c55b77',
+)
+[ info ] [ RUN ] app\index\controller\Wechat->validate_token[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Wechat.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-04-23T21:23:04+08:00 ] 199.19.226.101 GET blog.taotaifu.cn/w/143.html
+[运行时间：0.072819s] [吞吐率：13.73req/s] [内存消耗：2,269.40kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'content',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7,fr;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'https://www.google.com/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'arc_id' => '143',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Content->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Content.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/content/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001319s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001285s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.000890s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001233s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001024s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.000873s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001396s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000817s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001348s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001978s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001457s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000977s ]
+[ sql ] [ SQL ] UPDATE `blog_article`  SET `arc_click`=`arc_click`+1  WHERE  `arc_id` = 143 [ RunTime:0.025269s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title`,`arc_author`,`arc_content`,`sendtime` FROM `blog_article` WHERE  `arc_id` = 143 LIMIT 1 [ RunTime:0.000955s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001334s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 143 LIMIT 3 [ RunTime:0.000977s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` WHERE  `arc_id` = 143 LIMIT 1 [ RunTime:0.000951s ]
+---------------------------------------------------------------
+[ 2019-04-23T22:25:43+08:00 ] 54.36.149.5 GET blog.taotaifu.cn/?page=4
+[运行时间：0.062746s] [吞吐率：15.94req/s] [内存消耗：2,599.18kb] [文件加载：59]
+[ info ] [ LANG ] /www/wwwroot/blog_taotaifu_cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'deflate, gzip',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (compatible; AhrefsBot/6.1; +http://ahrefs.com/robot/)',
+  'host' => 'blog.taotaifu.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/wwwroot/blog_taotaifu_cn/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/blog_taotaifu_cn/public/../application/index/view/index/index.html [ array (
+  0 => '_webset',
+  1 => '_cateData',
+  2 => '_allCateData',
+  3 => '_tagData',
+  4 => '_articleData',
+  5 => '_linkData',
+  6 => 'headConf',
+  7 => 'srchtxt',
+  8 => 'limit',
+  9 => 'page',
+  10 => 'articleData',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001303s ] mysql:host=188.131.144.216;port=3306;dbname=blog_taotaifu_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_webset` [ RunTime:0.001306s ]
+[ sql ] [ SQL ] SELECT `webset_name`,`webset_value` FROM `blog_webset` [ RunTime:0.001018s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_cate` [ RunTime:0.001315s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` WHERE  `cate_pid` = 0 ORDER BY `cate_sort` DESC LIMIT 6 [ RunTime:0.001003s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_cate` ORDER BY `cate_sort` DESC [ RunTime:0.001301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_tag` [ RunTime:0.001216s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_tag` [ RunTime:0.000812s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_article` [ RunTime:0.001253s ]
+[ sql ] [ SQL ] SELECT `arc_id`,`arc_title` FROM `blog_article` ORDER BY `sendtime` DESC [ RunTime:0.001834s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_link` [ RunTime:0.001175s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_link` ORDER BY `link_sort` DESC [ RunTime:0.000877s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2 LIMIT 1 [ RunTime:0.001455s ]
+[ sql ] [ SQL ] SELECT * FROM `blog_article` `a` INNER JOIN `blog_cate` `c` ON `a`.`cate_id`=`c`.`cate_id` WHERE  `a`.`is_recycle` = 2 ORDER BY `sendtime` DESC LIMIT 24,8 [ RunTime:0.003975s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `blog_arc_tag` [ RunTime:0.001368s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 150 [ RunTime:0.001029s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 110 [ RunTime:0.000841s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 142 [ RunTime:0.000813s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 143 [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 162 [ RunTime:0.000943s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 145 [ RunTime:0.000867s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 106 [ RunTime:0.001114s ]
+[ sql ] [ SQL ] SELECT `t`.`tag_id`,`t`.`tag_name` FROM `blog_arc_tag` `at` INNER JOIN `blog_tag` `t` ON `at`.`tag_id`=`t`.`tag_id` WHERE  `at`.`arc_id` = 111 [ RunTime:0.000980s ]

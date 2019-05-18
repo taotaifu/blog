@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"/www/wwwroot/blog_taotaifu_cn/public/../application/index/view/about/index.html";i:1547816394;s:62:"/www/wwwroot/blog_taotaifu_cn/application/index/view/base.html";i:1552642535;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"/www/wwwroot/blog_taotaifu_cn/public/../application/index/view/about/index.html";i:1554445964;s:62:"/www/wwwroot/blog_taotaifu_cn/application/index/view/base.html";i:1552642535;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +66,7 @@
                     <h2>About my Data</h2>
                     <ul>
                         <div class="about_c">
-                            <p>昵称：<span>Moshutong</span></p>
+                            <p>昵称：<span>Mrs.默先森</span></p>
                             <p>姓名：陶太富 </p>
                             <p>生日：1990-11-27</p>
                             <p>邮箱：729589198@qq.com</p>
